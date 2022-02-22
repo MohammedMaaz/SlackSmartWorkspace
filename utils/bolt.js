@@ -1,9 +1,5 @@
 import { App, HTTPReceiver } from "@slack/bolt";
 import customRoutes from "../customRoutes";
-import "./errorHandler";
-import "../events/messages";
-import "../events/apphome";
-import "../events/commands";
 
 export const receiver = new HTTPReceiver({
   endpoints: ["/api/slack/events"],
@@ -18,3 +14,8 @@ const bolt = new App({
 });
 
 export default bolt;
+
+require("./errorHandler");
+require("../events/messages");
+require("../events/apphome");
+require("../events/commands");
