@@ -1,5 +1,5 @@
 export default async ({ message, say }) => {
-  await say(`Hey <@${message.user}>! Your time has been recorded! ${Date()}`);
+  await say(`Hey <@${message.user}>! Your time has been recorded! `);
   // await firebase
   //   .firestore()
   //   .collection("logs")

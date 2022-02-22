@@ -4,4 +4,4 @@ import _in from "../actions/in";
 import bolt from "../utils/bolt";
 
 bolt.message("hello", hello);
-bolt.message("in", _in)
+bolt.message("in", _in);
