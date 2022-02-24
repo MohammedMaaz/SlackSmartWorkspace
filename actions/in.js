@@ -11,7 +11,7 @@ export default async ({ message, say }) => {
   // if (perm === "yes") {
   await say(`Hey <@${message.user}>! Your time has been recorded!! `);
   await refs.attendance.doc(date).set({
-    timestamp: new Date(),
+    timestamp: new Date().toTimeString(),
     status: message.text,
     user: message.user,
     username: message.username || "",
