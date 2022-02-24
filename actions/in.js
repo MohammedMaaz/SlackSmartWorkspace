@@ -4,15 +4,16 @@ import State from "./index";
 export default async ({ message, say }) => {
   // if (State.state) {
   let date = new Date();
-  await say(`Hey <@${message.user}>! Your time has been recorded!! `);
-  await firebase
-    .firestore()
+  let todayAttendance = firebase.firestore
     .collection("attendance")
-    .doc(date.toDateString())
-    .set({
-      timestamp: new Date(),
-      status: message.text,
-      user: message.user,
-      username: message.username || "",
-    });
+    .doc(date.toDateString());
+  // if (todayAttendance.get({ status }) !== "in") {
+  await say(`Hey <@${message.user}>! Your time has been recorded!! `);
+  await todayAttendance.set({
+    timestamp: new Date(),
+    status: message.text,
+    user: message.user,
+    username: message.username || "",
+  });
+  // }
 };
