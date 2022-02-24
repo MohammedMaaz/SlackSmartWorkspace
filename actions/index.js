@@ -7,5 +7,9 @@ const Actions = {
   out: _out,
   timesheet: _timesheet,
 };
+const State = {
+  state: true
+}
 
 export default Actions;
+export default State;

@@ -1,4 +1,4 @@
-import firebase from "../utils/firebase";
+import firebase, { refs } from "../utils/firebase";
 import State from "./index";
 
 export default async ({ message, say }) => {
@@ -7,11 +7,7 @@ export default async ({ message, say }) => {
   // let todayAttendance = firebase.firestore
   //   .collection("attendance")
   //   .doc(date.toDateString());
-  let perm = await firebase
-    .firestore()
-    .collection("attendance")
-    .doc(date.toDateString())
-    .get({ permission });
+  let perm = refs.attendance.doc(date.toDateString()).get({ perm });
   if (perm === "yes") {
     await say(`Hey <@${message.user}>! Your time has been recorded!! `);
     await firebase

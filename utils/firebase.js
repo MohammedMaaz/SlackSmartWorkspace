@@ -19,6 +19,7 @@ const worklogs = (teamId, userId) =>
 const timesheets = (teamId, userId) =>
   users(teamId).doc(userId).collection("timesheets");
 const reports = (teamId) => teams.doc(teamId).collection("reports");
+const attendance = db().collection("attendance");
 
 export const refs = {
   teams,
@@ -26,6 +27,7 @@ export const refs = {
   worklogs,
   timesheets,
   reports,
+  attendance,
 };
 
 export const serverTimestamp = () => new Date();
