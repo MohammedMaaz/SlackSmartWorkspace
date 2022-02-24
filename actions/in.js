@@ -1,8 +1,8 @@
 import firebase from "../utils/firebase";
-const state = true;
+import State from "./index";
 
 export default async ({ message, say }) => {
-  if (state) {
+  if (State.state) {
     await say(`Hey <@${message.user}>! Your time has been recorded!! `);
     await firebase
       .firestore()
@@ -13,6 +13,6 @@ export default async ({ message, say }) => {
         user: message.user,
         username: message.username || "",
       });
-    state = false;
+    State.state = false;
   }
 };
