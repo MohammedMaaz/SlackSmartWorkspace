@@ -11,7 +11,7 @@ export default async ({ message, say }) => {
     .doc(date.toDateString())
     .set({
       timestamp: new Date(),
-      message: message.text,
+      status: message.text,
       user: message.user,
       username: message.username || "",
     });
