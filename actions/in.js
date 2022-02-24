@@ -7,7 +7,7 @@ export default async ({ message, say }) => {
   // let todayAttendance = firebase.firestore
   //   .collection("attendance")
   //   .doc(date.toDateString());
-  let perm = refs.attendance.doc(date.toDateString()).get({ perm });
+  let perm = await refs.attendance.doc(date.toDateString()).get({ perm });
   if (perm === "yes") {
     await say(`Hey <@${message.user}>! Your time has been recorded!! `);
     await firebase
