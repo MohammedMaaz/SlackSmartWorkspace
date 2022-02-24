@@ -3,18 +3,16 @@ import State from "./index";
 
 export default async ({ message, say }) => {
   // if (State.state) {
-  let time = new Date();
+  let date = new Date();
   await say(`Hey <@${message.user}>! Your time has been recorded!! `);
   await firebase
     .firestore()
     .collection("attendance")
-    .doc(time)
+    .doc(date.toDateString())
     .set({
       timestamp: new Date(),
       message: message.text,
       user: message.user,
       username: message.username || "",
     });
-  // State.state = false;
-  // }
 };
