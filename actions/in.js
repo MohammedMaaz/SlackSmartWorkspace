@@ -1,5 +1,4 @@
 import firebase, { refs } from "../utils/firebase";
-import State from "./index";
 
 export default async ({ message, say }) => {
   // if (State.state) {
