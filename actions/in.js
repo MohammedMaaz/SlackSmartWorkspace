@@ -3,11 +3,12 @@ import State from "./index";
 
 export default async ({ message, say }) => {
   // if (State.state) {
+  let time = new Date();
   await say(`Hey <@${message.user}>! Your time has been recorded!! `);
   await firebase
     .firestore()
     .collection("attendance")
-    .doc(new Date())
+    .doc(time)
     .set({
       timestamp: new Date(),
       message: message.text,
