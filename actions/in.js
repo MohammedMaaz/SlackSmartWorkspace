@@ -7,11 +7,11 @@ export default async ({ message, say }) => {
   // let todayAttendance = firebase.firestore
   //   .collection("attendance")
   //   .doc(date.toDateString());
-  let status = await firebase
-    .firestore()
-    .collection("attendance")
-    .doc(date.toDateString())
-    .get({ status });
+  // let status = await firebase
+  //   .firestore()
+  //   .collection("attendance")
+  //   .doc(date.toDateString())
+  //   .get({ status });
   // if (status !== "in") {
   await say(`Hey <@${message.user}>! Your time has been recorded!! `);
   await firebase
