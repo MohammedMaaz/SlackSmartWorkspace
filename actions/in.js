@@ -8,17 +8,17 @@ export default async ({ message, say }) => {
   //   .collection("attendance")
   //   .doc(date.toDateString());
   let perm = await refs.attendance.doc(date.toDateString()).get({ perm });
-  if (perm === "yes") {
-    await say(`Hey <@${message.user}>! Your time has been recorded!! `);
-    await firebase
-      .firestore()
-      .collection("attendance")
-      .doc(date.toDateString())
-      .set({
-        timestamp: new Date(),
-        status: message.text,
-        user: message.user,
-        username: message.username || "",
-      });
-  }
+  // if (perm === "yes") {
+  await say(`Hey <@${message.user}>! Your time has been recorded!! `);
+  await firebase
+    .firestore()
+    .collection("attendance")
+    .doc(date.toDateString())
+    .set({
+      timestamp: new Date(),
+      status: message.text,
+      user: message.user,
+      username: message.username || "",
+    });
+  // }
 };
