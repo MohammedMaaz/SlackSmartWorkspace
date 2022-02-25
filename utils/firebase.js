@@ -13,21 +13,22 @@ export const db = firebase.firestore;
 export const storage = firebase.storage;
 
 const teams = db().collection("teams");
+const attendance = db().collection("attendance");
+
 const users = (teamId) => teams.doc(teamId).collection("users");
 const worklogs = (teamId, userId) =>
   users(teamId).doc(userId).collection("worklogs");
 const timesheets = (teamId, userId) =>
   users(teamId).doc(userId).collection("timesheets");
 const reports = (teamId) => teams.doc(teamId).collection("reports");
-const attendance = db().collection("attendance");
 
 export const refs = {
   teams,
+  attendance,
   users,
   worklogs,
   timesheets,
   reports,
-  attendance,
 };
 
 export const serverTimestamp = () => new Date();

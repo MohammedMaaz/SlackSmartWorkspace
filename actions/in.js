@@ -1,17 +1,15 @@
-import firebase, { refs } from "../utils/firebase";
+import { refs } from "../utils/firebase";
 
 export default async ({ message, say }) => {
-  // if (State.state) {
-  let date = new Date().toDateString();
-  // let todayAttendance = firebase.firestore
-  //   .collection("attendance")
-  //   .doc(date.toDateString());
-  // let perm = await refs.attendance.doc(date.toDateString()).get({ perm });
-  // if (perm === "yes") {
-  await say(`Hey <@${message.user}>! Your time has been recorded!! `);
-  await refs.attendance.doc(date).set({
-    timestamp: new Date().toTimeString(),
-    status: message.text,
+  let date = new Date();
+  let dateString = date.toDateString();
+  let timeString = date.toTimeString();
+  // let state = await refs.attendance.doc(dateString).get(state);
+  // if (state === "out" || state === undefined || state === "") {
+  await say(`Hey <@${message.user}>! You are IN at ${timeString}.`);
+  await refs.attendance.doc(dateString).set({
+    timestampOfIn: new Date(),
+    state: message.text,
     user: message.user,
     username: message.username || "",
   });

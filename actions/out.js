@@ -1,14 +1,14 @@
-import firebase from "../utils/firebase";
+import { refs } from "../utils/firebase";
 
 export default async ({ message, say }) => {
-  await say(`Hey <@${message.user}>! Your time has been recorded!! `);
-  await firebase
-    .firestore()
-    .collection("logs")
-    .add({
-      timestamp: new Date(),
-      message: message.text,
-      user: message.user,
-      username: message.username || "",
-    });
+  let date = new Date();
+  let dateString = date.toDateString();
+  let timeString = date.toTimeString();
+  await say(`Hey <@${message.user}>! You are OUT at ${timeString}.`);
+  await refs.attendance.doc(dateString).update({
+    timestampOfOut: new Date(),
+    state: message.text,
+    user: message.user,
+    username: message.username || "",
+  });
 };

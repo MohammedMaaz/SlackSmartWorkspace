@@ -5,3 +5,4 @@ import bolt from "../utils/bolt";
 
 bolt.message("hello", hello);
 bolt.message("in", Actions.in);
+bolt.message("out", Actions.out);
