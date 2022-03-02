@@ -9,16 +9,18 @@ export default async ({ message, say }) => {
   //     let info =
   //   });
   // }
-  let obj;
-  const snapshot = await refs.attendance.get();
-  await refs.attendance.get().then((snapshot) => {
-    snapshot.docs.forEach((doc) => {
-      obj = doc.data();
-    });
-  });
-  let condition = obj.user;
-  // status = status.state;
-  if (condition === "out" || condition === undefined || condition === "") {
+  let reqDoc = await refs.attendance.doc(dateString).get();
+  let docData = reqDoc.data();
+  console.log("docData: ", docData);
+  let state = docData.state;
+  // const snapshot = await refs.attendance.get();
+  // await refs.attendance.get().then((snapshot) => {
+  //   snapshot.docs.forEach((doc) => {
+  //     obj = doc.data();
+  //   });
+  // });
+  // let condition = obj.user;
+  if (state === "out" || state === undefined || state === "") {
     await say(`Hey <@${message.user}>! You are IN at ${timeString}.`);
     await refs.attendance.doc(dateString).set({
       timestampOfIn: new Date(),
@@ -28,5 +30,5 @@ export default async ({ message, say }) => {
       username: message.username || "",
       // cond: condition,
     });
-  }
+  } else console.log("nhi hui");
 };
